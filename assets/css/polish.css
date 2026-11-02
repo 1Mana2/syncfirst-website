@@ -320,3 +320,17 @@ html:has(#md.o){overflow:hidden}
 [dir=rtl] .hero h1 .w i{line-height:1.5;padding:0 .04em;transform:translateY(160%)}
 [dir=rtl] .hero h1 .ln{margin-block:-.12em}
 @media(prefers-reduced-motion:reduce){[dir=rtl] .hero h1 .w i{transform:none}}
+
+/* Business challenges: line up the icon, title, description, approach and link rows across cards in the same row,
+   however many lines each title wraps to (cards share the grid's rows via subgrid). */
+.chg{align-items:stretch}
+@supports (grid-template-rows:subgrid){
+  .chc{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:8px;align-content:start}
+  .chc>*{margin:0}
+  .chc a{align-self:end;padding-top:8px}
+}
+@supports not (grid-template-rows:subgrid){
+  .chc h3{min-height:3.4em}
+  .chc p:not(.how){min-height:6.6em}
+  .chc .how{min-height:5em}
+}
