@@ -125,7 +125,8 @@ TM.forEach((t,i)=>{if(t[3])AR[t[3]]=B[i]})}
 function tr1(raw){const m=raw.match(/\s*([↗➤])$/),k=raw.replace(/\s*[↗➤]$/,'');const a=AR[k]||(LONG.find(([p])=>p&&k.startsWith(p))||[])[1];return a?a+(m?(m[1]==='↗'?' ↖':' ◂'):''):null}
 let LG='en';
 function tl(root=document.body){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),ns=[];while(w.nextNode())ns.push(w.currentNode);ns.forEach(n=>{const p=n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE'||n.parentNode.classList&&n.parentNode.classList.contains('l'))return;if(LG==='ar'){const o=n.__o!=null?n.__o:n.nodeValue,raw=o.trim();if(!raw)return;const a=tr1(raw);if(a){n.__o=o;n.nodeValue=o.replace(raw,a)}}else if(n.__o!=null){n.nodeValue=n.__o;delete n.__o}})}
-function setLang(l){LG=l;const r=document.documentElement;r.dir=l==='ar'?'rtl':'ltr';r.lang=l;tl();ls();$('#lg').textContent=l==='ar'?'En.':'Ar.';dispatchEvent(new Event('resize'))}
+function replayHero(){document.querySelectorAll('.hero h1 .w i').forEach(i=>{const d=+(i.style.getPropertyValue('--d')||0);i.style.animation='none';i.style.transform='';void i.offsetWidth;i.style.animation='';i.style.animationDelay=(.05+d*.1)+'s'})}
+function setLang(l,init){LG=l;const r=document.documentElement;r.dir=l==='ar'?'rtl':'ltr';r.lang=l;tl();ls();$('#lg').textContent=l==='ar'?'En':'Ar';try{localStorage.setItem('sf-lang',l)}catch(e){}if(!init)replayHero();dispatchEvent(new Event('resize'))}
 
 /* page router: one page at a time */
 const PGS=['home','about','team','services','industries','insights','careers','contact','privacy'],TT={home:'Management Consulting',about:'About Us',team:'Our Team',services:'Services',industries:'Industries',insights:'Insights',careers:'Careers',contact:'Contact Us',privacy:'Privacy Policy'};

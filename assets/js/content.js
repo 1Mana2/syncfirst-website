@@ -192,6 +192,6 @@ LONG[0][1]='نساعد المؤسسات على تعزيز الحوكمة وإد�
 
 /* ---------- Boot ---------- */
 addEventListener('hashchange',()=>{route();applyPre()});
-route();arInit();ii();act(0);$('#lg').onclick=()=>setLang(LG==='ar'?'en':'ar');applyPre();
+route();arInit();ii();act(0);$('#lg').onclick=()=>setLang(LG==='ar'?'en':'ar');applyPre();try{if(localStorage.getItem('sf-lang')==='ar')setLang('ar',true)}catch(e){}
 (function(){const go=()=>{const s=document.createElement('script');s.src=(window.__ROOT||'')+'assets/js/vendor/three.min.js';s.onload=()=>window.init3D&&window.init3D();document.head.appendChild(s)};
  if(matchMedia('(prefers-reduced-motion:reduce)').matches&&innerWidth<600)return;(window.requestIdleCallback||setTimeout)(go,{timeout:2500})})();
