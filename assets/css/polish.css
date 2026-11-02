@@ -334,3 +334,26 @@ html:has(#md.o){overflow:hidden}
   .chc p:not(.how){min-height:6.6em}
   .chc .how{min-height:5em}
 }
+
+/* Services, Insights articles and Engagement examples: align each text row (title, description, link...)
+   across the cards in a row, whatever the length of the titles above them. */
+@media(min-width:961px){@supports (grid-template-rows:subgrid){
+  /* Services: image + (icon, title, description, link) = 5 shared rows */
+  .sg .cd{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0}
+  .sg .cd .im{grid-row:1}
+  .sg .cd .bd{grid-row:2 / span 4;display:grid;grid-template-rows:subgrid;row-gap:0;align-content:start}
+  .sg .cd .bd .m{align-self:end;margin-top:0}
+  .sg .cd .bd p{margin-bottom:14px}
+
+  /* Insights articles: image + (category, title, status) = 4 shared rows */
+  .ig>div{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0}
+  .ig>div>img{grid-row:1}
+  .ig>div>div{grid-row:2 / span 3;display:grid;grid-template-rows:subgrid;row-gap:0;justify-items:start;align-content:start}
+  .ig>div .soon{align-self:end;margin:0}
+
+  /* Engagement examples: label, title, 4 x (heading + text), chips = 11 shared rows */
+  .csg .csc{display:grid;grid-row:span 11;grid-template-rows:subgrid;row-gap:0;align-content:start}
+  .csg .csc>dl{display:contents}
+  .csg .csc>.chips{align-self:start;margin-top:16px}
+  .csg .csc>.ill{justify-self:start}
+}}
