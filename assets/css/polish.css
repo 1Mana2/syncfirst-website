@@ -1,0 +1,322 @@
+/* ===== polish.css : contained banners, careers, mobile menu, theme toggle ===== */
+:root{--gx:clamp(12px,3vw,32px)}
+
+/* --- 1. Page banner: a contained panel, never cropped, never touching the next section --- */
+#pbn{margin:84px var(--gx) 28px;padding:56px 0 52px;min-height:290px;display:flex;align-items:center;border-radius:28px;border:1px solid rgba(3,255,246,.14);isolation:isolate}
+#pbn>.c{width:100%}
+#pbn::after{display:none}
+#pbn::before{inset:0;right:auto;top:auto;width:100%;height:100%;margin:0;border-radius:inherit;
+  background:radial-gradient(ellipse 55% 90% at 82% 50%,rgba(5,172,238,.30),transparent 70%)}
+[dir=rtl] #pbn::before{background:radial-gradient(ellipse 55% 90% at 18% 50%,rgba(5,172,238,.30),transparent 70%);left:0;right:auto}
+#pbn .c{padding-inline:clamp(20px,4vw,48px)}
+#pbn p{max-width:min(560px,100%)}
+.pbx{position:absolute;z-index:1;inset-inline-end:clamp(18px,7%,84px);top:50%;width:clamp(150px,19vw,220px);aspect-ratio:1;transform:translateY(-50%);pointer-events:none}
+.pbx svg{display:block;width:100%;height:100%;overflow:visible}
+.pbx .r1{fill:none;stroke:rgba(3,255,246,.5);stroke-width:2;stroke-linecap:round;stroke-dasharray:.1 6.6;transform-origin:100px 100px;animation:rot 90s linear infinite}
+.pbx .r2{fill:none;stroke:rgba(5,172,238,.35);stroke-width:1}
+.pbx .r3{fill:none;stroke:rgba(7,253,148,.4);stroke-width:1.2;stroke-dasharray:3 9;transform-origin:100px 100px;animation:rot 60s linear infinite reverse}
+.pbx .o1{transform-origin:100px 100px;animation:rot 18s linear infinite}
+.pbx .o2{transform-origin:100px 100px;animation:rot 26s linear infinite reverse}
+.pbx .s{fill:none;stroke:url(#g);stroke-width:5.5;stroke-linecap:round;opacity:.9}
+@media(max-width:640px){
+  #pbn{margin-top:78px;padding:40px 0 36px;min-height:230px;border-radius:22px}
+  #pbn p{padding-inline-end:92px;font-size:16px}
+  .pbx{top:auto;bottom:16px;transform:none;width:80px;inset-inline-end:16px;opacity:.85}
+  #pbn h1{overflow-wrap:anywhere}
+}
+
+/* --- 2. Careers: contained panel, content always visible, same in EN / AR --- */
+.ca{margin:0 var(--gx) 32px;border-radius:28px;min-height:0;padding-block:clamp(56px,9vw,96px)}
+.ca.first{padding-top:clamp(56px,9vw,96px)}
+.ca .rv{opacity:1!important;transform:none!important}
+.ca .c{max-width:660px;margin-inline:max(24px,calc((100% - 1100px)/2));width:auto}
+[dir=rtl] .ca .c{margin-left:max(24px,calc((100% - 1100px)/2));margin-right:max(24px,calc((100% - 1100px)/2))}
+.ca h2{margin:8px 0 0}
+.ca .perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.ca .perks span{border-radius:16px;padding:14px 16px}
+@media(max-width:640px){
+  .ca{border-radius:22px;padding-block:44px}
+  .ca::after{background:linear-gradient(180deg,rgba(13,13,51,.35),#0D0D33 88%)}
+  [dir=rtl] .ca::after{transform:none}
+  .ca .c{margin-inline:0;padding-inline:20px;max-width:none}
+  [dir=rtl] .ca .c{margin:0}
+}
+
+/* --- 3. Home hero: nothing cut off, clear gap before next section --- */
+.hero{overflow:clip}
+.hero+.mq{margin-top:28px}
+
+/* --- 4. Header on small screens: language + theme + menu all fit --- */
+@media(max-width:960px){
+  #th{display:inline-flex}
+  .nv{gap:10px}
+  #bg{margin-inline-start:0}
+  #lg{margin-inline-start:auto}
+  [dir=rtl] #lg{margin-inline-start:auto;margin-right:0}
+  [dir=rtl] #bg{margin:0}
+  #th,#lg,#bg{flex:none}
+}
+@media(max-width:420px){
+  .mk{width:36px;height:36px}
+  .wm{height:19px;width:auto}
+  .nv{gap:8px}
+  #lg{padding:0 10px;font-size:14px}
+}
+
+/* --- 5. Mobile menu: theme-aware panel --- */
+.nx{display:none}
+@media(max-width:960px){
+  header nav.o,header.sc nav.o{position:absolute;top:calc(100% + 8px);left:12px;right:12px;margin:0;max-height:calc(100svh - 96px);overflow:auto;
+    background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:22px;padding:10px;gap:2px;
+    box-shadow:0 28px 60px rgba(4,8,40,.38);animation:pgi .35s cubic-bezier(.2,.8,.2,1)}
+  header nav.o a,header.sc nav.o a{color:var(--fg);padding:14px 16px;font-size:16px;font-weight:700;border-radius:14px}
+  header nav.o a:hover,header nav.o a.on{background:color-mix(in srgb,var(--blue) 14%,transparent);color:var(--blue)}
+  nav.o .nx{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:8px;padding:12px 6px 4px;border-top:1px solid var(--line)}
+  nav.o .nx .btn{flex:1;justify-content:center;color:#07072a;padding:12px 16px}
+  header nav.o .nx a.btn{color:#07072a;font-size:15px}
+  .nx button{height:44px;min-width:44px;padding:0 14px;border-radius:99px;border:1px solid var(--line);background:var(--tint);color:var(--fg);font:700 14px Tajawal,sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:8px;justify-content:center}
+}
+@media(max-width:960px){
+  .nx button{flex:none;white-space:nowrap}
+  nav.o .nx .btn{min-width:0;white-space:normal;padding:12px 12px;font-size:14px}
+  header nav.o a::after{display:none!important}
+}
+
+/* --- 6. Home hero: 3D logo shown whole (no square crop), bigger and crisper --- */
+.cvw{max-width:min(520px,100%)}
+#cv{image-rendering:auto}
+@media(max-width:960px){
+  .hb>.cvw{max-width:min(400px,94vw);margin-bottom:76px}
+  .hero .hb{justify-items:stretch}
+  .hero h1{line-height:1.08}
+}
+.hero{overflow:clip}
+
+/* --- 7. Digital-architecture background for page banners --- */
+.pba{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 38%,#000 75%);mask-image:linear-gradient(90deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 38%,#000 75%)}
+[dir=rtl] .pba{-webkit-mask-image:linear-gradient(270deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 38%,#000 75%);mask-image:linear-gradient(270deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.55) 38%,#000 75%)}
+.pba svg{position:absolute;inset:0;width:100%;height:100%}
+.pba .gl{stroke:rgba(5,172,238,.09);stroke-width:1}
+.pba .tr{fill:none;stroke:rgba(3,255,246,.24);stroke-width:1.2;stroke-linejoin:round}
+.pba .bx{fill:rgba(13,13,51,.55);stroke:rgba(5,172,238,.38);stroke-width:1.2}
+.pba .bl{stroke:rgba(3,255,246,.3);stroke-width:1.2;stroke-linecap:round}
+.pba .nd2{fill:#0D0D33;stroke:#03FFF6;stroke-width:1.4}
+.pba .fl{fill:none;stroke:#03FFF6;stroke-width:2;stroke-linecap:round;stroke-dasharray:10 190;animation:pbf 7s linear infinite}
+.pba .fl.g{stroke:#07FD94;animation-duration:9s;animation-delay:-3s}
+@keyframes pbf{to{stroke-dashoffset:-400}}
+#pbn .c{z-index:2}
+
+/* --- 8. Team cards: even structure, email pinned to the bottom --- */
+.mg{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));grid-auto-rows:auto;row-gap:22px}
+.mc{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0;justify-items:center;align-content:start;padding:32px 20px 22px}
+.mc .ring{margin-bottom:20px}
+.mc h3{align-self:start;min-height:0;margin:0}
+.mc .rl2{margin:6px 0 12px;line-height:1.35}
+.mc .bd{display:flex;flex-direction:column;align-items:center;width:100%}
+.mc .bd p{margin:0 0 12px}
+.mc .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px}
+.mc .chips span{margin:0}
+.mc .ft{align-self:end;width:100%;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);min-height:1px}
+.mc .ft:empty{border-top-color:transparent}
+.mc .ml{display:inline-flex;margin:0;font-size:12.5px;justify-content:center;word-break:normal;overflow-wrap:anywhere}
+.lb{display:flex;flex-direction:column;align-items:flex-start}
+[dir=rtl] .lb{align-items:flex-start}
+.lb .chips{margin:4px 0 22px}
+.lb .btn.sm{margin-top:auto;align-self:flex-start;max-width:100%}
+
+/* team grid: balanced rows (3 + 2 centered), wider cards so emails fit */
+@media(min-width:1000px){
+  .mg{grid-template-columns:repeat(6,1fr);column-gap:24px}
+  .mg>.mc{grid-column:span 2}
+  .mg>.mc:nth-child(3n+1):nth-last-child(2){grid-column:2/span 2}
+  .mg>.mc:nth-child(3n+1):nth-last-child(2)+.mc{grid-column:4/span 2}
+  .mg>.mc:nth-child(3n+1):last-child{grid-column:3/span 2}
+}
+@media(min-width:641px) and (max-width:999px){
+  .mg{grid-template-columns:repeat(4,1fr)}
+  .mg>.mc{grid-column:span 2}
+  .mg>.mc:last-child:nth-child(odd){grid-column:2/span 2}
+}
+@media(max-width:640px){.mg{grid-template-columns:1fr}.mg>.mc{grid-column:auto}}
+.mc .ml{font-size:13px}
+
+/* ===== v5 ===== */
+/* banner emblem: centered vertically at every size, thicker S and rings */
+.pbx .s{stroke-width:10;opacity:1}
+.pbx .r1{stroke-width:3}.pbx .r2{stroke-width:1.8}.pbx .r3{stroke-width:2}
+@media(max-width:640px){
+  .pbx{top:50%;bottom:auto;transform:translateY(-50%);width:104px;inset-inline-end:14px;opacity:1}
+  #pbn h1{padding-inline-end:104px}
+  #pbn p{padding-inline-end:104px}
+}
+/* network canvas */
+.pba svg{display:none}
+.pba canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+/* team card contact block + profile button */
+.mc .ft{align-items:center;gap:6px}
+.mc .ml{gap:7px;align-items:center}
+.mc .ml svg{flex:none}
+.mc .ml.ph{color:var(--mut);font-weight:700;direction:ltr}
+.pfb{margin-top:10px;font:800 13.5px Tajawal,sans-serif;color:var(--fg);background:var(--tint);border:1px solid var(--line);border-radius:99px;padding:9px 20px;cursor:pointer;transition:.25s}
+.pfb:hover,.pfb:focus-visible{background:linear-gradient(135deg,var(--green),var(--blue));color:#07072a;border-color:transparent;outline:0}
+
+/* profile dialog */
+html.pfo{overflow:hidden}
+#pf{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:clamp(10px,3vw,28px);background:rgba(5,5,30,.72);backdrop-filter:blur(8px);opacity:0;transition:opacity .3s}
+#pf.o{opacity:1}
+.pfc{position:relative;width:min(760px,100%);max-height:calc(100svh - 24px);overflow:auto;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,4vw,36px);box-shadow:0 40px 90px rgba(0,0,0,.45);transform:translateY(24px) scale(.97);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+#pf.o .pfc{transform:none}
+.pfx{position:absolute;top:12px;inset-inline-end:14px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--tint);color:var(--fg);font-size:24px;line-height:1;cursor:pointer}
+.pfh{display:flex;align-items:center;gap:18px;margin-bottom:16px;padding-inline-end:44px}
+.pfh img{width:84px;height:84px;border-radius:50%;object-fit:cover;object-position:top;border:3px solid var(--blue);flex:none}
+.pfh h2{font-size:clamp(22px,4vw,28px);margin:0}
+.pfh .rl2{color:var(--blue);font-weight:800;margin-top:4px;font-size:15px}
+.pfs{color:var(--mut);margin:0 0 20px}
+.pfg{display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;margin-bottom:20px}
+.pfc h4{margin:0 0 8px;color:var(--blue);font-size:14.5px;letter-spacing:0}
+.pfc ul{margin:0;padding-inline-start:18px;font-size:15px;color:var(--mut)}
+.pfc li{margin:6px 0}
+.pfc .chips span{margin:0 6px 6px 0}[dir=rtl] .pfc .chips span{margin:0 0 6px 6px}
+.pff{margin-bottom:22px}
+.pfk{display:flex;flex-wrap:wrap;gap:10px 22px;padding-top:16px;border-top:1px solid var(--line)}
+.pfk .ml{display:inline-flex;gap:7px;align-items:center;color:var(--blue);font-weight:800;font-size:14px}
+@media(max-width:640px){.pfg{grid-template-columns:1fr}.pfh img{width:68px;height:68px}}
+.mc .ft{display:flex;flex-direction:column;align-items:center;align-self:stretch;justify-content:flex-start;gap:8px}
+.mc .ft .pfb{margin-top:6px}
+
+/* header logo: traced S, animated */
+.mk path.sp{fill:url(#sfH);stroke:none;stroke-width:0}
+.mk .sp{transform-box:view-box;transform-origin:50px 50px}
+.mk .sb{animation:sfb 6s ease-in-out 1.2s infinite}
+.mk .st{animation:sfin-r .9s cubic-bezier(.2,.8,.2,1) both,sft 6s ease-in-out 1.2s infinite}
+.mk .sl{animation:sfin-l .9s cubic-bezier(.2,.8,.2,1) both,sfl 6s ease-in-out 1.2s infinite}
+@keyframes sfin-r{from{transform:translate(26px,-8px);opacity:0}to{transform:none;opacity:1}}
+@keyframes sfin-l{from{transform:translate(-26px,8px);opacity:0}to{transform:none;opacity:1}}
+@keyframes sft{0%,100%{transform:translate(0,0)}50%{transform:translate(3px,-1.5px)}}
+@keyframes sfl{0%,100%{transform:translate(0,0)}50%{transform:translate(-3px,1.5px)}}
+@keyframes sfb{0%,100%{opacity:1}50%{opacity:.88}}
+.br:hover .mk .st{animation:sft 1.4s ease-in-out infinite}.br:hover .mk .sl{animation:sfl 1.4s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.mk .sp{animation:none!important}}
+
+/* home hero: icons hidden until the cursor is over the hero, then animate in (staggered) */
+.hero .nd.on{opacity:0;transform:scale(.3) rotate(-60deg);filter:blur(8px);box-shadow:none;pointer-events:none;transition:opacity .45s ease,transform .5s cubic-bezier(.4,0,.6,1),filter .45s ease,box-shadow .45s}
+.hero.hv .nd.on{opacity:1;transform:none;filter:none;box-shadow:0 0 34px rgba(5,172,238,.6);pointer-events:auto;transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1),filter .8s,box-shadow .8s}
+.hero.hv .nd:nth-of-type(1){transition-delay:0s}.hero.hv .nd:nth-of-type(2){transition-delay:.07s}.hero.hv .nd:nth-of-type(3){transition-delay:.14s}
+.hero.hv .nd:nth-of-type(4){transition-delay:.21s}.hero.hv .nd:nth-of-type(5){transition-delay:.28s}.hero.hv .nd:nth-of-type(6){transition-delay:.35s}
+@media(hover:none){.hero .nd.on{opacity:1;transform:none;filter:none;box-shadow:0 0 34px rgba(5,172,238,.6);pointer-events:auto}}
+@media(prefers-reduced-motion:reduce){.hero .nd.on,.hero.hv .nd.on{transition-duration:.01s;transition-delay:0s}}
+
+/* ===== v7 ===== */
+
+/* Dialogs: the card was clipped by an overflow:hidden that overrode overflow:auto, so long content could not be scrolled */
+html:has(#md.o){overflow:hidden}
+#md{overflow:hidden;overscroll-behavior:contain}
+#md>div{max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--blue) transparent}
+#md button#mx{position:sticky;top:0;z-index:5;width:40px;height:40px;margin:-8px 0 0;border-radius:50%;background:var(--card);border:1px solid var(--line);font-size:24px;line-height:1;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+@media(max-width:640px){#md>div{max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px)}}
+
+/* Team: management cards no longer carry an email row */
+.mc{grid-row:span 4}
+
+/* Home hero: supplied artwork as the section background */
+.hero{background:#041030}
+.hero>img.hbg,[dir=rtl] .hero>img.hbg{position:absolute;inset:0;width:100%;height:100%;max-width:none;aspect-ratio:auto;margin:0;object-fit:cover;object-position:center;opacity:1;animation:none;-webkit-mask-image:none;mask-image:none;z-index:0}
+/* artwork is mirrored in English so the hand sits on the logo side, away from the text; Arabic uses it as supplied */
+.hero>img.hbg{transform:scaleX(-1)}
+[dir=rtl] .hero>img.hbg{transform:none}
+.hero::after,[dir=rtl] .hero::after{z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(4,16,48,.78) 0,rgba(4,16,48,.5) 38%,rgba(4,16,48,0) 70%),linear-gradient(0deg,var(--bg),transparent 7%)}
+[dir=rtl] .hero::after{background:linear-gradient(270deg,rgba(4,16,48,.78) 0,rgba(4,16,48,.5) 38%,rgba(4,16,48,0) 70%),linear-gradient(0deg,var(--bg),transparent 7%)}
+.gridfx{display:none}
+.hero p.l{max-width:600px;font-size:18px;line-height:1.7}
+@media(max-width:960px){
+  .hero>img.hbg,[dir=rtl] .hero>img.hbg{inset:0;width:100%;height:100%;opacity:.9;object-position:30% center}
+  .hero::after,[dir=rtl] .hero::after{background:linear-gradient(180deg,rgba(4,16,48,.55),rgba(4,16,48,.7)),linear-gradient(0deg,var(--bg),transparent 6%)}
+}
+@media(max-width:480px){.hero p.l{font-size:16px}}
+
+/* Careers */
+.ca{background:#070b33}
+.ca>img{left:auto;right:0;width:60%;height:100%;opacity:1;object-fit:cover;object-position:0% 25%;clip-path:polygon(14% 0,100% 0,100% 100%,0 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%);mask-image:linear-gradient(90deg,transparent 0,#000 16%)}
+[dir=rtl] .ca>img{right:auto;left:0;object-position:100% 25%;clip-path:polygon(0 0,86% 0,100% 100%,0 100%);-webkit-mask-image:linear-gradient(270deg,transparent 0,#000 16%);mask-image:linear-gradient(270deg,transparent 0,#000 16%)}
+.ca::after{background:linear-gradient(90deg,#070b33 36%,rgba(7,11,51,.5) 44%,rgba(7,11,51,0) 56%)}
+[dir=rtl] .ca::after{transform:none;background:linear-gradient(270deg,#070b33 36%,rgba(7,11,51,.5) 44%,rgba(7,11,51,0) 56%)}
+.ca h2{font-size:clamp(34px,4.4vw,56px);line-height:1.08;letter-spacing:-.02em}
+.ca .perks{display:flex;flex-wrap:wrap;gap:12px}
+.ca .perks span{border-radius:14px;padding:9px 12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:var(--green);font-size:12.5px}
+.ca .c{max-width:590px}
+.ca{padding-block:clamp(40px,5vw,60px)}
+.ca .perks{margin-bottom:24px;gap:8px;flex-wrap:nowrap}
+.ca p.rv{margin:18px 0 22px!important}
+
+.sec.cw{padding-block:clamp(40px,5vw,64px) clamp(24px,3vw,40px)}
+.cwh{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr);gap:clamp(22px,4vw,56px);align-items:center;margin-bottom:34px}
+.cwh h2{font-size:clamp(30px,3.6vw,46px);line-height:1.06;letter-spacing:-.02em}
+.cwh>p{margin:0;color:var(--fg);font-size:16.5px;line-height:1.7;border-inline-start:1px solid var(--line);padding-inline-start:clamp(20px,3vw,40px)}
+.cwg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.cwg article{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 22px 26px;box-shadow:0 10px 30px rgba(10,20,60,.07);transition:transform .35s,border-color .35s}
+.cwg article:hover{transform:translateY(-4px);border-color:var(--blue)}
+.cwi{display:block;width:42px;height:42px;margin-bottom:14px;color:var(--blue)}
+.cwg h3{font-size:19px;margin:0 0 8px;letter-spacing:-.01em}
+.cwg p{margin:0;color:var(--mut);font-size:15px;line-height:1.55}
+
+.sec.cl2,.sec.cj{margin-inline:var(--gx);padding:0;border-radius:28px;color:#fff}
+.sec.cl2{background:#070b33;margin-bottom:32px;padding-block:clamp(30px,4.5vw,52px)}
+.clp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,72px);align-items:center;padding-inline:clamp(10px,3vw,40px)}
+.clf{position:relative;margin:0 0 14px 14px;margin-inline:14px 0}
+.clf::before{content:"";position:absolute;inset-inline-start:-16px;inset-block-end:-16px;width:62%;height:72%;border:3px solid var(--green);border-radius:26px;border-top-color:transparent;border-inline-end-color:transparent}
+.clf img{position:relative;z-index:1;width:100%;height:auto;aspect-ratio:1000/325;object-fit:cover;border-radius:26px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+@media(min-width:900px){.clf img{aspect-ratio:1.25;height:100%;max-height:340px}}
+.clt .eb{color:var(--cyan)}
+.clt h2{font-size:clamp(30px,3.6vw,46px);letter-spacing:-.02em}
+.clt>p{color:#d4dcf0;margin:14px 0 20px;max-width:560px}
+.clt ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.clt li{display:flex;gap:12px;align-items:center;color:#eef2fb;font-size:15.5px}
+.clt li svg{flex:none;width:22px;height:22px;color:var(--green)}
+
+.sec.cj{background:linear-gradient(100deg,#08336b 0,#0a4d94 55%,#06295a 100%);margin-bottom:32px;padding-block:clamp(26px,3.5vw,38px);position:relative;overflow:hidden}
+.sec.cj::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(3,255,246,.35) 1px,transparent 1.4px);background-size:14px 14px;-webkit-mask-image:linear-gradient(270deg,#000,transparent 40%);mask-image:linear-gradient(270deg,#000,transparent 40%);opacity:.5;pointer-events:none}
+[dir=rtl] .sec.cj::after{-webkit-mask-image:linear-gradient(90deg,#000,transparent 40%);mask-image:linear-gradient(90deg,#000,transparent 40%)}
+.cjb{position:relative;z-index:1;display:flex;align-items:center;gap:clamp(18px,3vw,34px);padding-inline:clamp(8px,3vw,40px)}
+.cjm{flex:none;width:54px;height:54px;color:var(--cyan)}
+.cjt{flex:1;min-width:0;border-inline-start:1px solid rgba(255,255,255,.28);padding-inline-start:clamp(18px,3vw,34px)}
+.cjt h2{font-size:clamp(22px,2.6vw,30px);letter-spacing:-.01em}
+.cjt p{margin:8px 0 0;color:#dbe7ff;font-size:16px}
+
+@media(max-width:960px){
+  .cwh{grid-template-columns:1fr}
+  .cwh>p{border-inline-start:0;padding-inline-start:0}
+  .cwg{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .clp{grid-template-columns:1fr}
+  .ca>img,[dir=rtl] .ca>img{width:100%;clip-path:none;opacity:.34;-webkit-mask-image:none;mask-image:none}
+  .ca::after,[dir=rtl] .ca::after{background:linear-gradient(180deg,rgba(7,11,51,.4),#070b33 90%)}
+  .cjb{flex-wrap:wrap}
+  .cjt{flex-basis:calc(100% - 100px)}
+}
+@media(max-width:560px){
+  .cwg{grid-template-columns:1fr}
+  .cjt{border-inline-start:0;padding-inline-start:0;flex-basis:100%}
+  .cjm{display:none}
+  .cjb .btn{width:100%;justify-content:center}
+}
+@media(max-width:960px){.ca .perks{flex-wrap:wrap}.ca .c{max-width:none;min-width:0}.ca p.rv{overflow-wrap:anywhere}}
+
+/* v7.1 careers hero: keep the text column clear of the photo */
+@media(min-width:961px){
+  .ca .c,[dir=rtl] .ca .c{max-width:min(600px,46%);margin-inline:clamp(28px,5vw,88px) 0;margin-left:clamp(28px,5vw,88px);margin-right:0}
+  [dir=rtl] .ca .c{margin-left:0;margin-right:clamp(28px,5vw,88px)}
+  .ca>img{width:50%;object-position:30% 25%;clip-path:polygon(12% 0,100% 0,100% 100%,0 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%);mask-image:linear-gradient(90deg,transparent 0,#000 14%)}
+  [dir=rtl] .ca>img{width:50%;object-position:52% 25%;clip-path:polygon(0 0,88% 0,100% 100%,0 100%);-webkit-mask-image:linear-gradient(270deg,transparent 0,#000 14%);mask-image:linear-gradient(270deg,transparent 0,#000 14%)}
+  .ca::after{background:linear-gradient(90deg,#070b33 48%,rgba(7,11,51,0) 60%)}
+  [dir=rtl] .ca::after{background:linear-gradient(270deg,#070b33 48%,rgba(7,11,51,0) 60%)}
+}
+
+/* Fix (Arabic hero headline): each word sits in an overflow:hidden mask with a tight line-height,
+   which clipped the tashkeel (ُ ّ) above the letters and the dots below them.
+   Give the mask real vertical room and offset it with negative margins so layout is unchanged. */
+[dir=rtl] .hero h1{line-height:1.5;letter-spacing:0;word-spacing:.05em}
+[dir=rtl] .hero h1 .w{padding:.3em .06em .25em;margin:-.3em -.06em -.25em;overflow:hidden}
+[dir=rtl] .hero h1 .w i{line-height:1.5;padding:0 .04em;transform:translateY(160%)}
+[dir=rtl] .hero h1 .ln{margin-block:-.12em}
+@media(prefers-reduced-motion:reduce){[dir=rtl] .hero h1 .w i{transform:none}}
