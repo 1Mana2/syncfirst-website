@@ -30,7 +30,7 @@ Upload the folder contents to any static host (Netlify, Cloudflare Pages, GitHub
 2. **Production domain.** Canonical URLs, Open Graph URLs, `sitemap.xml`, `robots.txt` and the JSON-LD use `https://syncfirst.com.sa` (inferred from the email domain, not confirmed). If different, regenerate: replace that string across the files.
 3. **Business approval of content** (see list below).
 4. **Privacy Policy** (`/privacy/`) is a plain-language draft built from what the form collects. Have counsel review it against the laws that apply to SyncFirst (for example Saudi PDPL) before publishing. Nothing on the site claims legal compliance.
-5. **Careers email.** The Careers button uses `careers@syncfirst.sa` (from the original file). All other addresses use `syncfirst.com.sa`. Confirm which is correct.
+5. **Careers email.** All addresses, including `careers@syncfirst.com.sa`, now use `syncfirst.com.sa` (the careers address was previously `.sa`).
 6. **Hosting headers (recommended).** Add a Content-Security-Policy, `X-Content-Type-Options`, and HSTS at the host. The site loads Google Fonts and three.js (cdnjs) only. Add Subresource Integrity to the three.js tag if you pin the file.
 
 ## Content that needs business approval

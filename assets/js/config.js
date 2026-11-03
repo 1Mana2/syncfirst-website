@@ -3,6 +3,6 @@
    (for example a Formspree/Getform endpoint or an API route). Leave empty until one is provisioned:
    the contact form then reports honestly that online sending is not enabled and offers an email fallback. */
 window.SYNCFIRST_CONFIG = {
-  formEndpoint: "https://formspree.io/f/maeelnrg",
+  formEndpoint: "",
   fallbackEmail: "info@syncfirst.com.sa"
 };

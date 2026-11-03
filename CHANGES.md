@@ -64,3 +64,8 @@ Open PowerShell in the project folder: `py -m http.server 8080` then browse to h
 - Language button: "عربي" is now "Ar." (and "En." in Arabic mode).
 - Careers: rebuilt after the supplied mockup (hero panel, "Why SyncFirst" cards, "Life at SyncFirst", join banner) with natively written Arabic (assets/js/updates.js).
 - Not updated: page meta descriptions and og:image still use the earlier wording/image.
+
+## v14
+- Frameworks slider: removed all framework/government logo images (and the `assets/images/fw/` folder). Cards are now designed text cards (icon tile, name, full title, category pill, hover glow), same auto-scroll/drag behaviour. The framework popup uses a gradient header and icon instead of a logo.
+- Vision 2030 logo kept; the image file was clipped at the bottom, so it was trimmed to its complete part and sized/centred in its card.
+- Careers email changed from `careers@syncfirst.sa` to `careers@syncfirst.com.sa` on every page.
