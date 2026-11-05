@@ -1,3 +1,10 @@
+## v17
+- Profile pages: removed the empty band above the hero (the generic first-section top padding was stacking on the hero margin); the hero now sits just under the header. Certification chips restored under the role.
+
+## v16
+- Team page: removed the bio text from the Mohamed Shawky and Amr Mahmoud cards (the View profile button remains).
+- Profile pages: the connected-nodes network is now the background of the hero. Labels (Internal Audit, Risk Management, ...), the "NODES / LINKS" readout and the empty panel are gone; the person's photo sits at the hub of the network. Certification chips removed.
+
 ## v6
 - Team: removed "View profile" buttons, the certification/tag chips, and the 01/02 numbering.
 - Home hero: the six icons are hidden until the cursor is over the hero, then animate in one by one; they fade out when the cursor leaves. On touch devices (no hover) they stay visible.

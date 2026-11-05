@@ -158,3 +158,52 @@ footer{position:relative}
 .vl{display:grid;place-items:center;padding:clamp(26px,3.4vw,44px)}
 .vl img{width:100%;max-width:400px;height:auto;aspect-ratio:720/448;object-fit:contain}
 @media(max-width:960px){.vl img{max-width:340px}}
+
+/* ===== Leadership profile pages (#mohamed-shawky, #amr-mahmoud) ===== */
+.prf{padding-bottom:56px}
+.prf-hero{position:relative;overflow:hidden;margin:84px var(--gx,24px) 0;border-radius:28px;border:1px solid rgba(3,255,246,.16);background:radial-gradient(ellipse 60% 100% at 95% 0%,rgba(5,172,238,.42),transparent 70%),linear-gradient(120deg,#06182e 0%,#0a2f50 55%,#0a5f7f 130%);color:#fff;padding:52px 0}
+.prf-hb{display:grid;grid-template-columns:minmax(260px,330px) 1fr;gap:clamp(28px,5vw,64px);align-items:center;padding-inline:clamp(20px,4vw,48px)}
+
+
+.prf-id .bc{margin-bottom:22px;flex-wrap:wrap}
+.prf-id h1{font:800 clamp(34px,4.6vw,58px)/1.05 Sora,Tajawal,sans-serif;letter-spacing:-.03em;color:#fff;margin:0}
+.prf-role{font:700 clamp(17px,2vw,22px)/1.35 Sora,Tajawal,sans-serif;color:#e4f4ff;margin:14px 0 0}
+
+
+.prf-ct{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-top:22px}
+.prf-ic{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#fff;color:#0D0D33;transition:transform .25s,background .25s,color .25s}
+.prf-ic svg{width:19px;height:19px}.prf-ic:hover,.prf-ic:focus-visible{transform:translateY(-3px);background:linear-gradient(135deg,var(--green),var(--blue))}
+.prf-em{color:#cfe9ff;font-weight:700;font-size:14.5px;word-break:break-all}.prf-em:hover{color:#fff;text-decoration:underline}
+.prf-body{padding-top:48px}
+.prf-tx{max-width:920px}
+.prf-tx p{font-size:17px;line-height:1.9;color:var(--fg);margin:0 0 22px}
+.prf-ft{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;max-width:920px;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+.prf-back{display:inline-flex;align-items:center;gap:10px;font:800 14.5px Sora,Tajawal,sans-serif;color:var(--blue)}
+.prf-back svg{width:18px;height:18px;transform:scaleX(-1)}.prf-back:hover{text-decoration:underline}
+[dir=rtl] .prf-back svg{transform:none}
+[dir=rtl] .prf-hero{background:radial-gradient(ellipse 60% 100% at 5% 0%,rgba(5,172,238,.42),transparent 70%),linear-gradient(240deg,#06182e 0%,#0a2f50 55%,#0a5f7f 130%)}
+@media(max-width:820px){.prf-hero{margin-top:78px;padding:34px 0;border-radius:22px}.prf-hb{grid-template-columns:1fr;justify-items:start}.prf-tx p{font-size:16px;line-height:1.85}}
+/* team cards now open the profile */
+.lc{position:relative}.ar-ph{cursor:pointer}
+.lnk{color:inherit}.lnk::after{content:"";position:absolute;inset:0;z-index:1}.lc:hover .lnk{color:var(--blue)}
+.lbt{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}.lbt .btn.sm{margin-top:0}
+.btn.sm.pf{background:transparent;border:1.5px solid var(--line);color:var(--fg)}.btn.sm.pf:hover{border-color:var(--blue);transform:translateY(-3px)}
+@media(prefers-reduced-motion:reduce){.prf-ic,.btn.sm.pf{transition:none}}
+
+/* team profile hero: network background + photo */
+.prf-hero{isolation:isolate}
+.prf-bg{position:absolute;inset:0;z-index:0;display:block;width:100%;height:100%;pointer-events:none}
+.prf-hb{position:relative;z-index:1;grid-template-columns:minmax(220px,300px) 1fr}
+.prf-ph{position:relative;width:100%;max-width:300px;aspect-ratio:1;border-radius:50%;padding:5px;background:linear-gradient(135deg,var(--green),var(--blue));box-shadow:0 0 0 10px rgba(3,255,246,.08),0 24px 60px rgba(2,8,30,.55),0 0 50px rgba(5,172,238,.35)}
+.prf-ph::before{content:"";position:absolute;inset:-16px;border-radius:50%;border:1.5px dashed rgba(3,255,246,.45);animation:prfspin 40s linear infinite}
+.prf-ph img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center 22%;background:#0a2f50;border:4px solid #06182e}
+@keyframes prfspin{to{transform:rotate(360deg)}}
+@media(max-width:760px){.prf-hb{grid-template-columns:1fr;justify-items:center;text-align:center}.prf-ph{max-width:210px}.prf-id{display:flex;flex-direction:column;align-items:center}.prf-id .bc{justify-content:center}.prf-ct{justify-content:center}}
+@media(prefers-reduced-motion:reduce){.prf-ph::before{animation:none}}
+
+/* profile hero sits right under the fixed header: no extra top space */
+body:not([data-pg=home]) .prf.first{padding-top:0}
+.prf-hero{margin-top:92px}
+.prf-cr{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.prf-cr span{padding:6px 13px;border-radius:99px;border:1px solid rgba(3,255,246,.4);background:rgba(3,255,246,.08);color:#bff8ff;font:700 12px Sora,sans-serif;letter-spacing:.04em}
+@media(max-width:760px){.prf-hero{margin-top:84px}.prf-cr{justify-content:center}}

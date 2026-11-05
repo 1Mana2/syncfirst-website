@@ -168,8 +168,8 @@ function applyPre(){if(PG!=='contact'||window.__pre==null)return;const s=$('#f-s
 /* ---------- Page metadata (SEO) ---------- */
 const PM=window.__PM||{};
 function setMeta(p){const m=PM[p]||[TT[p]+' | SyncFirst',''];document.title=m[0];const d=$('meta[name=description]');if(d&&m[1])d.content=m[1];
- [['og:title',m[0]],['og:description',m[1]],['og:url',(window.__SITE||'')+(p==='home'?'/':'/'+p+'/')]].forEach(([k,v])=>{const e=$('meta[property="'+k+'"]');if(e&&v)e.content=v});
- const c=$('link[rel=canonical]');if(c&&window.__SITE)c.href=window.__SITE+(p==='home'?'/':'/'+p+'/')}
+ [['og:title',m[0]],['og:description',m[1]],['og:url',(window.__SITE||'')+(p==='home'?'/':'/'+(PRF.includes(p)?'team':p)+'/')]].forEach(([k,v])=>{const e=$('meta[property="'+k+'"]');if(e&&v)e.content=v});
+ const c=$('link[rel=canonical]');if(c&&window.__SITE)c.href=window.__SITE+(p==='home'?'/':'/'+(PRF.includes(p)?'team':p)+'/')}
 
 /* ---------- Global interactions ---------- */
 document.addEventListener('click',e=>{const t=e.target;
